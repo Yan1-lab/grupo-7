@@ -9,7 +9,28 @@ let carritoCount = 0;
 const grid = document.getElementById('grid-reservas');
 const busqueda = document.getElementById('busqueda');
 const filtroCat = document.getElementById('filtro-categoria');
-
+//ESTA FUNCION ES PARA EL RANGO DE PRECIOS
+const filtroPrecio = document.getElementById('filtro.precio');
+function aplicarFiltros(){
+    const texto = busqueda.value.toLowerCase();
+    const cat = filtroCat.value;
+    const rango = filtroPrecio.value;
+    const filtrados = reservas.filter(r => {
+        const coincideTexto = r.titulo.toLowerCase().incluides(texto);
+        const coincideCat = (cat === 'todos' || r.categoria === cat);
+//UNICAMENTE MODIFICAR ESTOS DATOS PARA AUMENTAR, O VARIAR EL RANGO DE LOS PRECIOS
+        let coincidePrecio = true;
+        if (rango === 'basico'){
+            coincidePrecio = r.precio <= 100;
+        } else if (rango === 'estandar') {
+            coincidePrecio = r.precio > 100 && r.precio <=200;
+        } else if (rango === 'premium'){
+            coincidePrecio = r.precio > 200;
+        }
+        return coincideTexto && coincideCat && coincidePrecio;
+    });
+    mostrarTarjetas(filtrados);
+}
 function mostrarTarjetas(lista) {
     grid.innerHTML = '';
     lista.forEach(item => {
