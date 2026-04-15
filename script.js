@@ -58,14 +58,27 @@ busqueda.addEventListener('input', aplicarFiltros);
 filtroCat.addEventListener('change', aplicarFiltros);
 filtroPrecio.addEventListener('change', aplicarFiltros);
 
-filtroCat.addEventListener('change', (e) => {
-    const cat = e.target.value;
-    if(cat === 'todos') {
-        mostrarTarjetas(reservas);
-    } else {
-        const filtrados = reservas.filter(r => r.categoria === cat);
-        mostrarTarjetas(filtrados);
-    }
-});
+/*EN CASO DE AUMENTAR DESTINOS RECORDAD COLOCAR O ACTUALIZAR LOS LINKS*/
+const mapas = {
+    machuPicchu: "https://www.google.com/maps?q=Machu+Picchu&output=embed",
+    titicaca: "https://www.google.com/maps?q=Lago+Titicaca&output=embed",
+    nazca: "https://www.google.com/maps?q=Lineas+de+Nazca&output=embed",
+    iquitos: "https://www.google.com/maps?q=Iquitos&output=embed"
+}
 
+function cargarMapa(lugar) {
+const mapa = document.getElementById("mapa");
+    if (mapa && mapas[lugar]) {
+        mapa.src = mapas[lugar];
+    }
+}
+window.addEventListener("DOMContentLoaded", () => {
+    const destino = localStorage.getItem("destino");
+    if (!destino) return;
+//AQUI CUANDO AGREGUEMOS MAS DESTINOS LO TENDRAR QUE AUMENTAR
+    if (destino.includes("Machu")) cargarMapa("machuPicchu");
+    if (destino.includes("Titicaca")) cargarMapa("titicaca");
+    if (destino.includes("Nazca")) cargarMapa("nazca");
+    if (destino.includes("Iquitos")) cargarMapa("iquitos");
+});
 mostrarTarjetas(reservas);
