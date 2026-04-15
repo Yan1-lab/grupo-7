@@ -81,4 +81,18 @@ window.addEventListener("DOMContentLoaded", () => {
     if (destino.includes("Nazca")) cargarMapa("nazca");
     if (destino.includes("Iquitos")) cargarMapa("iquitos");
 });
+function cambiarImagen(img) {
+    const principal = document.getElementById("img-principal");
+    const temp = principal.src;
+
+    principal.style.opacity = 0;
+    principal.style.transform = "scale(0.95)";
+
+    setTimeout(() => {
+        principal.src = img.src;
+        img.src = temp;
+        
+        principal.style.opacity = 1;
+        principal.style.transform = "scale(1)";
+    }, 200);
 mostrarTarjetas(reservas);
