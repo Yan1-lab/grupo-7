@@ -96,3 +96,32 @@ function cambiarImagen(img) {
         principal.style.transform = "scale(1)";
     }, 200);
 mostrarTarjetas(reservas);
+document.getElementById("grid-reservas").addEventListener("click", (e) => {
+    if (e.target.classList.contains("btn-reservar")){
+        const card = e.target.closest(".tarjeta");
+        const titulo = card.querySelector("h3").innerText;
+        const id = e.target.dataset.id;
+        //AQUI SE PONDRAN LOS LINKS DE REFERENCIA PARA QUE DEL INDEX VALLAN A LOS DEMAS HTML
+        let destinoURL = "";
+        switch(id) {
+            case "1":
+                destinoURL = "";
+                break;
+            case "2":
+                destinoURL = "";
+                break;
+            case "3":
+                destinoURL = "";
+                break;    
+            case "4":
+                destinoURL = "";
+                break;
+        }
+        localStorage.setItem("destino", titulo);
+        document.body.classList.add("fade-out");
+
+        setTimeout(() => {
+            location.href = destinoURL;
+        }, 500);
+    }
+});
