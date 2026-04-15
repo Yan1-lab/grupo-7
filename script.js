@@ -16,7 +16,7 @@ function aplicarFiltros(){
     const cat = filtroCat.value;
     const rango = filtroPrecio.value;
     const filtrados = reservas.filter(r => {
-        const coincideTexto = r.titulo.toLowerCase().incluides(texto);
+        const coincideTexto = r.titulo.toLowerCase().includes(texto);
         const coincideCat = (cat === 'todos' || r.categoria === cat);
 //UNICAMENTE MODIFICAR ESTOS DATOS PARA AUMENTAR, O VARIAR EL RANGO DE LOS PRECIOS
         let coincidePrecio = true;
