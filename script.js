@@ -11,7 +11,7 @@ const busqueda = document.getElementById('busqueda');
 const filtroCat = document.getElementById('filtro-categoria');
 //ESTA FUNCION ES PARA EL RANGO DE PRECIOS
 const filtroPrecio = document.getElementById('filtro.precio');
-function aplicarFiltros(){
+function aplicarFiltros() {
     const texto = busqueda.value.toLowerCase();
     const cat = filtroCat.value;
     const rango = filtroPrecio.value;
@@ -20,11 +20,11 @@ function aplicarFiltros(){
         const coincideCat = (cat === 'todos' || r.categoria === cat);
 //UNICAMENTE MODIFICAR ESTOS DATOS PARA AUMENTAR, O VARIAR EL RANGO DE LOS PRECIOS
         let coincidePrecio = true;
-        if (rango === 'basico'){
+        if (rango === 'basico') {
             coincidePrecio = r.precio <= 100;
         } else if (rango === 'estandar') {
-            coincidePrecio = r.precio > 100 && r.precio <=200;
-        } else if (rango === 'premium'){
+            coincidePrecio = r.precio > 100 && r.precio <= 200;
+        } else if (rango === 'premium') {
             coincidePrecio = r.precio > 200;
         }
         return coincideTexto && coincideCat && coincidePrecio;
@@ -41,7 +41,7 @@ function mostrarTarjetas(lista) {
                     <h3>${item.titulo}</h3>
                     <p>${item.desc}</p>
                     <p class="precio">$${item.precio}</p>
-                    <button class="btn-reservar" onclick="añadirCarrito()">Reservar ahora</button>
+                    <button class="btn-reservar" data-id="${item.id}">Reservar ahora </button>
                 </div>
             </article>
         `;
@@ -53,12 +53,10 @@ function añadirCarrito() {
     document.getElementById('cart-count').innerText = carritoCount;
     alert("¡Reserva añadida con éxito!");
 }
-
-busqueda.addEventListener('input', (e) => {
-    const texto = e.target.value.toLowerCase();
-    const filtrados = reservas.filter(r => r.titulo.toLowerCase().includes(texto));
-    mostrarTarjetas(filtrados);
-});
+//ESTA ZONA NO MODIFICAR PARA EVITAR PROBLEMAS DE LOS FILTROS Y SI LO MODIFICAN RECUERDEN INFORMAR EN LA DESCRIPCION DEL COMMIT CHANGES
+busqueda.addEventListener('input', aplicarFiltros);
+filtroCat.addEventListener('change', aplicarFiltros);
+filtroPrecio.addEventListener('change', aplicarFiltros);
 
 filtroCat.addEventListener('change', (e) => {
     const cat = e.target.value;
