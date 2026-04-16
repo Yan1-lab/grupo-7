@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lambayeque | Reserva</title>
+
+    <link rel="stylesheet" href="/css/ramas.css">
+</head>
+<body>
+
+<header class="topbar">
+    <h1>Lambayeque Cultural Hotel</h1>
+    <button class="btn-reserva-top">Reserva ahora</button>
+</header>
+
+<section class="galeria-container">
+
+    <div class="imagen-principal">
+        <img id="img-principal" src="https://images.pexels.com/photos/259280/pexels-photo-259280.jpeg" alt="Lambayeque">
+    </div>
+
+    <div class="miniaturas">
+        <img src="https://images.pexels.com/photos/532826/pexels-photo-532826.jpeg" onclick="cambiarImagen(this)">
+        <img src="https://images.pexels.com/photos/210186/pexels-photo-210186.jpeg" onclick="cambiarImagen(this)">
+        <img src="https://images.pexels.com/photos/1619317/pexels-photo-1619317.jpeg" onclick="cambiarImagen(this)">
+        <img src="https://images.pexels.com/photos/2356045/pexels-photo-2356045.jpeg" onclick="cambiarImagen(this)">
+    </div>
+
+</section>
+
+<section class="info-container">
+
+    <div class="info-left">
+
+        <h2>Descripción</h2>
+        <p>
+            Hotel ubicado en Lambayeque, cerca de importantes centros históricos y culturales del norte del Perú.
+            Ideal para visitar el Museo Tumbas Reales de Sipán y disfrutar de la gastronomía norteña.
+        </p>
+
+        <div class="tags">
+            <span>Desayuno incluido</span>
+            <span>Cultura y museos</span>
+            <span>WiFi gratis</span>
+            <span>Ubicación céntrica</span>
+        </div>
+
+        <h2>Ubicación</h2>
+        <div class="mapa">
+            <iframe
+                id="mapa"
+                src="https://www.google.com/maps?q=Lambayeque+Peru&output=embed"
+                width="100%"
+                height="300"
+                style="border:0;"
+                loading="lazy">
+            </iframe>
+        </div>
+
+    </div>
+
+    <div class="info-right">
+
+        <div class="precio-box">
+            <h2>$85 / noche</h2>
+            <button class="btn-reservar">Reservar ahora</button>
+        </div>
+
+        <div class="rating">
+            ⭐ 8.9 - Experiencia cultural y gastronómica
+        </div>
+
+    </div>
+
+</section>
+
+<script src="/script.js"></script>
+
+</body>
+</html>
