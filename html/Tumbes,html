@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tumbes | Reserva</title>
+
+    <link rel="stylesheet" href="/css/ramas.css">
+</head>
+<body>
+
+<header class="topbar">
+    <h1>Tumbes Beach Resort</h1>
+    <button class="btn-reserva-top">Reserva ahora</button>
+</header>
+
+<section class="galeria-container">
+
+    <div class="imagen-principal">
+        <img id="img-principal" src="https://images.pexels.com/photos/1450353/pexels-photo-1450353.jpeg" alt="Tumbes">
+    </div>
+
+    <div class="miniaturas">
+        <img src="https://images.pexels.com/photos/457882/pexels-photo-457882.jpeg" onclick="cambiarImagen(this)">
+        <img src="https://images.pexels.com/photos/21014/pexels-photo.jpg" onclick="cambiarImagen(this)">
+        <img src="https://images.pexels.com/photos/373912/pexels-photo-373912.jpeg" onclick="cambiarImagen(this)">
+        <img src="https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg" onclick="cambiarImagen(this)">
+    </div>
+
+</section>
+
+<section class="info-container">
+
+    <div class="info-left">
+
+        <h2>Descripción</h2>
+        <p>
+            Hotel frente al mar en Tumbes, ideal para disfrutar de playas cálidas, manglares y un clima tropical todo el año.
+            Perfecto para relajarte, practicar deportes acuáticos y explorar la naturaleza del norte peruano.
+        </p>
+
+        <div class="tags">
+            <span>Desayuno incluido</span>
+            <span>Vista al mar</span>
+            <span>WiFi gratis</span>
+            <span>Excursiones a manglares</span>
+        </div>
+
+        <h2>Ubicación</h2>
+        <div class="mapa">
+            <iframe
+                id="mapa"
+                src="https://www.google.com/maps?q=Tumbes+Peru&output=embed"
+                width="100%"
+                height="300"
+                style="border:0;"
+                loading="lazy">
+            </iframe>
+        </div>
+
+    </div>
+
+    <div class="info-right">
+
+        <div class="precio-box">
+            <h2>$100 / noche</h2>
+            <button class="btn-reservar">Reservar ahora</button>
+        </div>
+
+        <div class="rating">
+            ⭐ 9.0 - Clima tropical y playas hermosas
+        </div>
+
+    </div>
+
+</section>
+
+<script src="/script.js"></script>
+
+</body>
+</html>
