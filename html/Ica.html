@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ica | Reserva</title>
+
+    <link rel="stylesheet" href="/css/ramas.css">
+</head>
+<body>
+
+<header class="topbar">
+    <h1>Ica Desert Experience</h1>
+    <button class="btn-reserva-top">Reserva ahora</button>
+</header>
+
+<section class="galeria-container">
+
+    <div class="imagen-principal">
+        <img id="img-principal" src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/33/fc/f0/huacachina.jpg?w=1200&h=800&s=1" alt="Ica">
+    </div>
+
+    <div class="miniaturas">
+        <img src="https://images.pexels.com/photos/1619317/pexels-photo-1619317.jpeg" onclick="cambiarImagen(this)">
+        <img src="https://images.pexels.com/photos/21014/pexels-photo.jpg" onclick="cambiarImagen(this)">
+        <img src="https://images.pexels.com/photos/2356045/pexels-photo-2356045.jpeg" onclick="cambiarImagen(this)">
+        <img src="https://images.pexels.com/photos/3014019/pexels-photo-3014019.jpeg" onclick="cambiarImagen(this)">
+    </div>
+
+</section>
+
+<section class="info-container">
+
+    <div class="info-left">
+
+        <h2>Descripción</h2>
+        <p>
+            Hotel exclusivo en el oasis de Huacachina, rodeado de dunas y paisajes desérticos.
+            Disfruta de aventuras como sandboarding, paseos en buggy y atardeceres inolvidables.
+        </p>
+
+        <div class="tags">
+            <span>Desayuno incluido</span>
+            <span>Vista al oasis</span>
+            <span>WiFi gratis</span>
+            <span>Tour en buggy</span>
+        </div>
+
+        <h2>Ubicación</h2>
+        <div class="mapa">
+            <iframe
+                id="mapa"
+                src="https://www.google.com/maps?q=Huacachina+Ica&output=embed"
+                width="100%"
+                height="300"
+                style="border:0;"
+                loading="lazy">
+            </iframe>
+        </div>
+
+    </div>
+
+    <div class="info-right">
+
+        <div class="precio-box">
+            <h2>$120 / noche</h2>
+            <button class="btn-reservar">Reservar ahora</button>
+        </div>
+
+        <div class="rating">
+            ⭐ 9.0 - Experiencia única en el desierto
+        </div>
+
+    </div>
+
+</section>
+
+<script src="/script.js"></script>
+
+</body>
+</html>
