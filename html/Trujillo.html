@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Trujillo | Reserva</title>
+
+    <link rel="stylesheet" href="/css/ramas.css">
+</head>
+<body>
+
+<header class="topbar">
+    <h1>Trujillo Colonial Hotel</h1>
+    <button class="btn-reserva-top">Reserva ahora</button>
+</header>
+
+<section class="galeria-container">
+
+    <div class="imagen-principal">
+        <img id="img-principal" src="https://images.pexels.com/photos/460672/pexels-photo-460672.jpeg" alt="Trujillo">
+    </div>
+
+    <div class="miniaturas">
+        <img src="https://images.pexels.com/photos/210186/pexels-photo-210186.jpeg" onclick="cambiarImagen(this)">
+        <img src="https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg" onclick="cambiarImagen(this)">
+        <img src="https://images.pexels.com/photos/1619317/pexels-photo-1619317.jpeg" onclick="cambiarImagen(this)">
+        <img src="https://images.pexels.com/photos/2356045/pexels-photo-2356045.jpeg" onclick="cambiarImagen(this)">
+    </div>
+
+</section>
+
+<section class="info-container">
+
+    <div class="info-left">
+
+        <h2>Descripción</h2>
+        <p>
+            Hotel en la ciudad de Trujillo, conocida por su arquitectura colonial, historia y cercanía a importantes sitios arqueológicos.
+            Ideal para visitar Chan Chan, las Huacas del Sol y de la Luna, y disfrutar de la marinera.
+        </p>
+
+        <div class="tags">
+            <span>Desayuno incluido</span>
+            <span>Centro histórico</span>
+            <span>WiFi gratis</span>
+            <span>Cultura y arqueología</span>
+        </div>
+
+        <h2>Ubicación</h2>
+        <div class="mapa">
+            <iframe
+                id="mapa"
+                src="https://www.google.com/maps?q=Trujillo+Peru&output=embed"
+                width="100%"
+                height="300"
+                style="border:0;"
+                loading="lazy">
+            </iframe>
+        </div>
+
+    </div>
+
+    <div class="info-right">
+
+        <div class="precio-box">
+            <h2>$95 / noche</h2>
+            <button class="btn-reservar">Reservar ahora</button>
+        </div>
+
+        <div class="rating">
+            ⭐ 9.1 - Ciudad histórica y cultural
+        </div>
+
+    </div>
+
+</section>
+
+<script src="/script.js"></script>
+
+</body>
+</html>
