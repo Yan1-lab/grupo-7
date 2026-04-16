@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lima | Reserva</title>
+
+    <link rel="stylesheet" href="/css/ramas.css">
+</head>
+<body>
+
+<header class="topbar">
+    <h1>Lima City Hotel</h1>
+    <button class="btn-reserva-top">Reserva ahora</button>
+</header>
+
+<section class="galeria-container">
+
+    <div class="imagen-principal">
+        <img id="img-principal" src="https://images.pexels.com/photos/358229/pexels-photo-358229.jpeg" alt="Lima">
+    </div>
+
+    <div class="miniaturas">
+        <img src="https://images.pexels.com/photos/2102587/pexels-photo-2102587.jpeg" onclick="cambiarImagen(this)">
+        <img src="https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg" onclick="cambiarImagen(this)">
+        <img src="https://images.pexels.com/photos/373912/pexels-photo-373912.jpeg" onclick="cambiarImagen(this)">
+        <img src="https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg" onclick="cambiarImagen(this)">
+    </div>
+
+</section>
+
+<section class="info-container">
+
+    <div class="info-left">
+
+        <h2>Descripción</h2>
+        <p>
+            Hotel moderno ubicado en el corazón de Lima, cerca de zonas turísticas como Miraflores y Barranco.
+            Disfruta de la mejor gastronomía, vida nocturna y vistas al océano Pacífico.
+        </p>
+
+        <div class="tags">
+            <span>Desayuno incluido</span>
+            <span>Vista al mar</span>
+            <span>WiFi gratis</span>
+            <span>Cerca a zonas turísticas</span>
+        </div>
+
+        <h2>Ubicación</h2>
+        <div class="mapa">
+            <iframe
+                id="mapa"
+                src="https://www.google.com/maps?q=Lima+Peru&output=embed"
+                width="100%"
+                height="300"
+                style="border:0;"
+                loading="lazy">
+            </iframe>
+        </div>
+
+    </div>
+
+    <div class="info-right">
+
+        <div class="precio-box">
+            <h2>$90 / noche</h2>
+            <button class="btn-reservar">Reservar ahora</button>
+        </div>
+
+        <div class="rating">
+            ⭐ 8.8 - Excelente ubicación urbana
+        </div>
+
+    </div>
+
+</section>
+
+<script src="/script.js"></script>
+
+</body>
+</html>
