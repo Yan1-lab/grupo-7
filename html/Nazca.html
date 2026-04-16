@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nazca | Reserva</title>
+
+    <link rel="stylesheet" href="/css/ramas.css">
+</head>
+<body>
+
+<header class="topbar">
+    <h1>Nazca Desert Experience</h1>
+    <button class="btn-reserva-top">Reserva ahora</button>
+</header>
+
+<section class="galeria-container">
+
+    <div class="imagen-principal">
+        <img id="img-principal" src="https://encolombia.com/wp-content/uploads/2020/12/Cultura-Nazca.jpg" alt="Nazca">
+    </div>
+
+    <div class="miniaturas">
+        <img src="https://picchutravel.com/wp-content/uploads/las-lineas-de-nazca-arana.jpg" onclick="cambiarImagen(this)">
+        <img src="https://images.trvl-media.com/lodging/24000000/23100000/23092700/23092677/f99220be.jpg?impolicy=resizecrop&rw=575&rh=575&ra=fill" onclick="cambiarImagen(this)">
+        <img src="https://images.trvl-media.com/place/6084593/c6022cb2-341e-40d4-8d7f-8d201bae66d8.jpg" onclick="cambiarImagen(this)">
+        <img src="https://muyinteresante.okdiario.com/wp-content/uploads/sites/5/2024/10/66fe4ccba565a.jpeg" onclick="cambiarImagen(this)">
+    </div>
+
+</section>
+
+<section class="info-container">
+
+    <div class="info-left">
+
+        <h2>Descripción</h2>
+        <p>
+            Hotel ubicado en Nazca con acceso a tours a las famosas Líneas de Nazca,
+            vistas al desierto, habitaciones cómodas y experiencias únicas como vuelos turísticos
+            y excursiones culturales.
+        </p>
+
+        <div class="tags">
+            <span>Desayuno incluido</span>
+            <span>Vista al desierto</span>
+            <span>WiFi gratis</span>
+            <span>Sobrevuelo incluido</span>
+        </div>
+
+        <h2>Ubicación</h2>
+        <div class="mapa">
+            <iframe
+                id="mapa"
+                src="https://www.google.com/maps?q=Nazca&output=embed"
+                width="100%"
+                height="300"
+                style="border:0;"
+                loading="lazy">
+            </iframe>
+        </div>
+
+    </div>
+
+    <div class="info-right">
+
+        <div class="precio-box">
+            <h2>$120 / noche</h2>
+            <button class="btn-reservar">Reservar ahora</button>
+        </div>
+
+        <div class="rating">
+            ⭐ 9.0 - Experiencia única
+        </div>
+
+    </div>
+
+</section>
+
+<script src="/script.js"></script>
+
+</body>
+</html>
