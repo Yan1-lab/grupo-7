@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Puno | Reserva</title>
+
+    <link rel="stylesheet" href="/css/ramas.css">
+</head>
+<body>
+
+<header class="topbar">
+    <h1>Puno Altiplano Hotel</h1>
+    <button class="btn-reserva-top">Reserva ahora</button>
+</header>
+
+<section class="galeria-container">
+
+    <div class="imagen-principal">
+        <img id="img-principal" src="https://images.pexels.com/photos/1631678/pexels-photo-1631678.jpeg" alt="Puno">
+    </div>
+
+    <div class="miniaturas">
+        <img src="https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg" onclick="cambiarImagen(this)">
+        <img src="https://images.pexels.com/photos/2356045/pexels-photo-2356045.jpeg" onclick="cambiarImagen(this)">
+        <img src="https://images.pexels.com/photos/1619317/pexels-photo-1619317.jpeg" onclick="cambiarImagen(this)">
+        <img src="https://images.pexels.com/photos/210186/pexels-photo-210186.jpeg" onclick="cambiarImagen(this)">
+    </div>
+
+</section>
+
+<section class="info-container">
+
+    <div class="info-left">
+
+        <h2>Descripción</h2>
+        <p>
+            Hotel ubicado en Puno, a orillas del Lago Titicaca, el lago navegable más alto del mundo.
+            Ideal para conocer las islas flotantes de los Uros, Taquile y disfrutar de la cultura andina.
+        </p>
+
+        <div class="tags">
+            <span>Desayuno incluido</span>
+            <span>Vista al lago</span>
+            <span>WiFi gratis</span>
+            <span>Cultura andina</span>
+        </div>
+
+        <h2>Ubicación</h2>
+        <div class="mapa">
+            <iframe
+                id="mapa"
+                src="https://www.google.com/maps?q=Puno+Peru&output=embed"
+                width="100%"
+                height="300"
+                style="border:0;"
+                loading="lazy">
+            </iframe>
+        </div>
+
+    </div>
+
+    <div class="info-right">
+
+        <div class="precio-box">
+            <h2>$95 / noche</h2>
+            <button class="btn-reservar">Reservar ahora</button>
+        </div>
+
+        <div class="rating">
+            ⭐ 9.1 - Cultura y paisaje del altiplano
+        </div>
+
+    </div>
+
+</section>
+
+<script src="/script.js"></script>
+
+</body>
+</html>
