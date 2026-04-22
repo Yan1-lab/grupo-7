@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tarapoto | Reserva</title>
+
+    <link rel="stylesheet" href="/css/ramas.css">
+</head>
+<body>
+
+<header class="topbar">
+    <h1>Tarapoto Jungle Hotel</h1>
+    <button class="btn-reserva-top">Reserva ahora</button>
+</header>
+
+<section class="galeria-container">
+
+    <div class="imagen-principal">
+        <img id="img-principal" src="https://s3.us-east-1.amazonaws.com/ca-webprod/media/hoteles-tarapoto.webp?s=504134" alt="Tarapoto">
+    </div>
+
+    <div class="miniaturas">
+        <img src="https://rusticahoteles.com/storage/slider/424-TARA%201%20copia.jpg" onclick="cambiarImagen(this)">
+        <img src="https://cms.movilbus.pe/storage/blog-feature-images/conocer-destinos-tarapoto-bus.jpg" onclick="cambiarImagen(this)">
+        <img src="https://www.dosgardeniastours.com/images/destinos/tarapoto/tarapoto.jpg" onclick="cambiarImagen(this)">
+        <img src="https://www.mevoydeviaje.com/content/images/thumbs/0004129_tarapoto-week-exp_600.png" onclick="cambiarImagen(this)">
+    </div>
+
+</section>
+
+<section class="info-container">
+
+    <div class="info-left">
+
+        <h2>Descripción</h2>
+        <p>
+            Hotel ubicado en Tarapoto, conocida como la "Ciudad de las Palmeras", en plena selva peruana.
+            Ideal para disfrutar de cataratas, lagunas y una experiencia única rodeada de naturaleza tropical.
+        </p>
+
+        <div class="tags">
+            <span>Desayuno incluido</span>
+            <span>Piscina natural</span>
+            <span>WiFi gratis</span>
+            <span>Tours a cataratas</span>
+        </div>
+
+        <h2>Ubicación</h2>
+        <div class="mapa">
+            <iframe
+                id="mapa"
+                src="https://www.google.com/maps?q=Tarapoto+Peru&output=embed"
+                width="100%"
+                height="300"
+                style="border:0;"
+                loading="lazy">
+            </iframe>
+        </div>
+
+    </div>
+
+    <div class="info-right">
+
+        <div class="precio-box">
+            <h2>$85 / noche</h2>
+            <button class="btn-reservar">Reservar ahora</button>
+        </div>
+
+        <div class="rating">
+            ⭐ 9.2 - Naturaleza y aventura amazónica
+        </div>
+
+    </div>
+
+</section>
+
+<script src="/script.js"></script>
+
+</body>
+</html>
