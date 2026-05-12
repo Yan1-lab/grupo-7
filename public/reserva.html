@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Reserva | Explorer</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .form-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .btn-pagar {
+            background: #ffb700;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .btn-pagar:hover {
+            background: #f7ca00;
+        }
+        .precio-total {
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Formulario de Reserva</h2>
+        <div id="destino-info"></div>
+        <form id="form-reserva">
+            <div class="form-group">
+                <label for="nombre">Nombre y Apellido Completo *</label>
+                <input type="text" id="nombre" required>
+                <div class="error" id="error-nombre"></div>
+            </div>
+            <div class="form-group">
+                <label for="dni">DNI *</label>
+                <input type="text" id="dni" required>
+                <div class="error" id="error-dni"></div>
+            </div>
+            <div class="form-group">
+                <label for="celular">Número de Celular *</label>
+                <input type="tel" id="celular" required>
+                <div class="error" id="error-celular"></div>
+            </div>
+            <div class="form-group">
+                <label for="email">Correo Electrónico *</label>
+                <input type="email" id="email" required>
+                <div class="error" id="error-email"></div>
+            </div>
+            <div class="form-group">
+                <label for="dias">Número de Días/Noches *</label>
+                <input type="number" id="dias" min="1" required>
+                <div class="error" id="error-dias"></div>
+            </div>
+            <div class="form-group">
+                <label for="tarjeta">Número de Tarjeta *</label>
+                <input type="text" id="tarjeta" placeholder="1234 5678 9012 3456" required>
+                <div class="error" id="error-tarjeta"></div>
+            </div>
+            <div class="form-group">
+                <label for="vencimiento">Fecha de Vencimiento (MM/AA) *</label>
+                <input type="text" id="vencimiento" placeholder="12/25" required>
+                <div class="error" id="error-vencimiento"></div>
+            </div>
+            <div class="form-group">
+                <label for="seguridad">Código de Seguridad (CVV) *</label>
+                <input type="text" id="seguridad" placeholder="123" required>
+                <div class="error" id="error-seguridad"></div>
+            </div>
+            <div class="precio-total" id="precio-total"></div>
+            <button type="submit" class="btn-pagar">Pagar y Confirmar Reserva</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Configurar EmailJS (reemplaza con tus IDs reales)
+        emailjs.init("9Jnehp6hiqU9SWZ_N"); // Obtén esto de tu cuenta EmailJS
+
+        const usuario = localStorage.getItem("usuario");
+        if (!usuario) {
+            alert("Debes iniciar sesión antes de reservar.");
+            window.location.href = "sesion/login.html";
+        }
+
+        const destino = localStorage.getItem("destino") || "Destino";
+        const precioBase = parseFloat(localStorage.getItem("precioBase")) || 100;
+        const imagenURL = localStorage.getItem("imagenPrincipal") || "";
+
+        document.getElementById("destino-info").innerHTML = `
+            <h3>Reservando: ${destino}</h3>
+            <img src="${imagenURL}" alt="${destino}" style="width: 100%; max-height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 20px;">
+        `;
+
+        function calcularPrecio() {
+            const dias = parseInt(document.getElementById("dias").value) || 1;
+            const total = precioBase * dias;
+            document.getElementById("precio-total").textContent = `Precio Total: $${total.toFixed(2)}`;
+        }
+
+        document.getElementById("dias").addEventListener("input", calcularPrecio);
+        calcularPrecio(); // Calcular inicialmente
+
+        document.getElementById("form-reserva").addEventListener("submit", async function(e) {
+            e.preventDefault();
+
+            let valido = true;
+            const campos = ["nombre", "dni", "celular", "email", "dias", "tarjeta", "vencimiento", "seguridad"];
+
+            campos.forEach(campo => {
+                const el = document.getElementById(campo);
+                const errorEl = document.getElementById("error-" + campo);
+                if (!el.value.trim()) {
+                    errorEl.textContent = "Este campo es obligatorio.";
+                    valido = false;
+                } else {
+                    errorEl.textContent = "";
+                }
+            });
+
+            const email = document.getElementById("email").value;
+            if (email && !/\S+@\S+\.\S+/.test(email)) {
+                document.getElementById("error-email").textContent = "Correo electrónico inválido.";
+                valido = false;
+            }
+
+            const dni = document.getElementById("dni").value;
+            if (dni && !/^\d{8}$/.test(dni)) {
+                document.getElementById("error-dni").textContent = "DNI debe tener 8 dígitos.";
+                valido = false;
+            }
+
+            const celular = document.getElementById("celular").value;
+            if (celular && !/^\d{9}$/.test(celular)) {
+                document.getElementById("error-celular").textContent = "Celular debe tener 9 dígitos.";
+                valido = false;
+            }
+
+            const tarjeta = document.getElementById("tarjeta").value.replace(/\s/g, "");
+            if (tarjeta && !/^\d{16}$/.test(tarjeta)) {
+                document.getElementById("error-tarjeta").textContent = "Número de tarjeta debe tener 16 dígitos.";
+                valido = false;
+            }
+
+            const vencimiento = document.getElementById("vencimiento").value;
+            if (vencimiento && !/^\d{2}\/\d{2}$/.test(vencimiento)) {
+                document.getElementById("error-vencimiento").textContent = "Formato MM/AA requerido.";
+                valido = false;
+            }
+
+            const seguridad = document.getElementById("seguridad").value;
+            if (seguridad && !/^\d{3}$/.test(seguridad)) {
+                document.getElementById("error-seguridad").textContent = "CVV debe tener 3 dígitos.";
+                valido = false;
+            }
+
+            if (!valido) return;
+
+            const precioTotalStr = document.getElementById("precio-total").textContent.replace(/^Precio Total:\s*/i, "");
+            const dias = document.getElementById("dias").value;
+
+            try {
+                const respuesta = await fetch('/api/reservas', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        usuario,
+                        destino,
+                        dias,
+                        precio_total: precioTotalStr,
+                        imagen: imagenURL
+                    })
+                });
+
+                const datos = await respuesta.json();
+                if (!respuesta.ok) {
+                    throw new Error(datos.error || 'No se pudo guardar la reserva.');
+                }
+            } catch (error) {
+                alert('No se pudo guardar la reserva: ' + error.message);
+                console.error(error);
+                return;
+            }
+
+            const templateParams = {
+                email: email,
+                to_email: email,
+                from_name: "EXPLORER",
+                to_name: document.getElementById("nombre").value,
+                destino: destino,
+                dias: dias,
+                precio_total: precioTotalStr,
+                imagen: imagenURL,
+                mensaje: "¡Esperamos que disfrutes tu viaje!. Atte.Explorer"
+            };
+
+            emailjs.send("service_npkcmom", "template_zafekxr", templateParams, "9Jnehp6hiqU9SWZ_N")
+                .then(function(response) {
+                    alert("Reserva confirmada. Revisa tu correo para más detalles.");
+                    location.href = "index.html";
+                    console.log("Email enviado", response.status, response.text);
+                }, function(error) {
+                    const mensajeError = error && (error.text || error.message || JSON.stringify(error));
+                    alert("Reserva registrada. Pero hubo un problema al enviar el correo: " + mensajeError);
+                    location.href = "index.html";
+                    console.error("Error EmailJS", error);
+                });
+        });
+    </script>
+</body>
+</html>

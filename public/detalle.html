@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de destino | Explorer</title>
+    <link rel="stylesheet" href="css/ramas.css">
+</head>
+<body>
+<header class="topbar">
+    <div class="topbar-text">
+        <h1 id="destino-title">Detalle del destino</h1>
+        <p id="destino-subtitle" class="topbar-subtitle"></p>
+    </div>
+    <button class="btn-reserva-top btn-reservar">Reservar ahora</button>
+</header>
+
+<main id="detalle-page">
+    <section class="galeria-container">
+        <div class="imagen-principal">
+            <img id="img-principal" src="" alt="Destino">
+        </div>
+        <div class="miniaturas" id="miniaturas"></div>
+    </section>
+
+    <section class="info-container">
+        <div class="info-left">
+            <h2>Descripción</h2>
+            <p id="detalle-descripcion"></p>
+
+            <div class="tags" id="detalle-tags"></div>
+
+            <h2>Ubicación</h2>
+            <div class="mapa">
+                <iframe
+                    id="mapa"
+                    src=""
+                    width="100%"
+                    height="300"
+                    style="border:0;"
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+
+        <div class="info-right">
+            <div class="precio-box">
+                <h2 class="precio-hotel" data-precio=""></h2>
+                <button class="btn-reservar">Reservar ahora</button>
+            </div>
+            <div id="detalle-rating" class="rating"></div>
+        </div>
+    </section>
+
+    <div id="detalle-error" style="display:none; padding: 20px; text-align: center;">
+        <p>No se encontró el destino solicitado.</p>
+        <a href="index.html" class="btn-reservar">Volver al listado</a>
+    </div>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

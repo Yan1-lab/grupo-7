@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | EXPLORER</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        body {
+            background-color: #f5f7fa;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .login-card {
+            max-width: 950px; /* Un poco más ancho para mantener proporción */
+            min-height: 650px; /*  AQUÍ AUMENTAMOS LA ALTURA */
+            border-radius: 20px;
+            overflow: hidden;
+            border: none;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+        }
+
+        /* Lado izquierdo */
+        .bg-dark-blue {
+            background-color: #0b1f3a;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem; /* Más espacio interno */
+        }
+
+        .bg-dark-blue h1 {
+            font-size: 3.5rem; /* Letras más grandes */
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        /* Lado derecho */
+        .login-form-container {
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 5rem 4rem; /* Más espacio arriba y abajo */
+        }
+
+        /* Botón personalizado */
+        .btn-custom {
+            background-color: #f4c430;
+            color: #0b1f3a;
+            font-weight: 700;
+            border: none;
+            padding: 16px; /* Botón más alto */
+            font-size: 1.1rem;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .btn-custom:hover {
+            background-color: #e6b800;
+            transform: scale(1.02);
+        }
+
+        .form-control {
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid #dee2e6;
+        }
+
+        .form-control:focus {
+            border-color: #f4c430;
+            box-shadow: 0 0 0 0.25rem rgba(244, 196, 48, 0.2);
+        }
+
+        .active-tab {
+            background-color: #0b1f3a !important;
+            color: white !important;
+            border-color: #0b1f3a !important;
+        }
+
+        .form-panel {
+            transition: opacity 0.2s ease;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row login-card mx-auto g-0">
+        
+        <div class="col-md-6 bg-dark-blue text-center">
+            <h1 class="text-uppercase">EXPLORER</h1>
+            <p class="fs-5 text-white-50 mt-4">Explora, reserva y viaja con la mayor confianza del mercado.</p>
+        </div>
+
+        <div class="col-md-6 login-form-container">
+            <div class="mb-4 d-flex gap-2 justify-content-center">
+                <button id="tab-login" class="btn btn-outline-primary flex-fill active-tab">Iniciar sesión</button>
+                <button id="tab-register" class="btn btn-outline-secondary flex-fill">Registrarse</button>
+            </div>
+
+            <div id="login-panel" class="form-panel">
+                <div class="mb-4">
+                    <h2 class="fw-bold" style="color: #0b1f3a; font-size: 1.8rem;">Bienvenido</h2>
+                    <p class="text-muted">Ingresa tus credenciales para continuar</p>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label fw-semibold">Usuario</label>
+                    <input type="text" id="login-user" class="form-control form-control-lg" placeholder="Nombre de usuario">
+                </div>
+                
+                <div class="mb-4">
+                    <label class="form-label fw-semibold">Contraseña</label>
+                    <input type="password" id="login-pass" class="form-control form-control-lg" placeholder="Contraseña">
+                </div>
+
+                <button onclick="login()" class="btn btn-custom w-100 mb-4 shadow-sm">Entrar al Portal</button>
+            </div>
+
+            <div id="register-panel" class="form-panel d-none">
+                <div class="mb-4">
+                    <h2 class="fw-bold" style="color: #0b1f3a; font-size: 1.8rem;">Crea tu cuenta</h2>
+                    <p class="text-muted">Regístrate para acceder a tus reservas personales.</p>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Usuario</label>
+                    <input type="text" id="reg-user" class="form-control form-control-lg" placeholder="Nombre de usuario">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Contraseña</label>
+                    <input type="password" id="reg-pass" class="form-control form-control-lg" placeholder="Contraseña (mínimo 6 caracteres)">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Correo</label>
+                    <input type="email" id="reg-email" class="form-control form-control-lg" placeholder="correo@ejemplo.com">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Fecha de nacimiento</label>
+                    <input type="date" id="reg-fecha" class="form-control form-control-lg">
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label fw-semibold">DNI</label>
+                    <input type="text" id="reg-dni" class="form-control form-control-lg" placeholder="8 dígitos">
+                </div>
+
+                <button onclick="registerUser()" class="btn btn-custom w-100 mb-4 shadow-sm">Crear cuenta</button>
+            </div>
+
+            <div id="mensaje" class="text-center mb-3"></div>
+
+            <p class="text-muted text-center mt-auto mb-0" style="font-size: 0.85rem;">
+                Protección de datos de nivel bancario.
+            </p>
+        </div>
+
+    </div>
+</div>
+
+<script>
+const tabLogin = document.getElementById('tab-login');
+const tabRegister = document.getElementById('tab-register');
+const loginPanel = document.getElementById('login-panel');
+const registerPanel = document.getElementById('register-panel');
+const mensaje = document.getElementById('mensaje');
+
+function showTab(tab) {
+    if (tab === 'login') {
+        tabLogin.classList.add('active-tab');
+        tabRegister.classList.remove('active-tab');
+        loginPanel.classList.remove('d-none');
+        registerPanel.classList.add('d-none');
+    } else {
+        tabRegister.classList.add('active-tab');
+        tabLogin.classList.remove('active-tab');
+        registerPanel.classList.remove('d-none');
+        loginPanel.classList.add('d-none');
+    }
+    mensaje.innerHTML = '';
+}
+
+tabLogin.addEventListener('click', () => showTab('login'));
+tabRegister.addEventListener('click', () => showTab('register'));
+
+async function login() {
+    const usuario = document.getElementById('login-user').value.trim();
+    const password = document.getElementById('login-pass').value.trim();
+
+    if (!usuario || !password) {
+        mensaje.innerHTML = `<span class="text-danger fw-bold">❌ Completa usuario y contraseña.</span>`;
+        return;
+    }
+
+    try {
+        const respuesta = await fetch('/api/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ usuario, password })
+        });
+
+        const data = await respuesta.json();
+
+        if (!respuesta.ok) {
+            mensaje.innerHTML = `<span class="text-danger fw-bold">❌ ${data.error || 'Credenciales incorrectas.'}</span>`;
+            return;
+        }
+
+        localStorage.setItem('usuario', data.usuario);
+        mensaje.innerHTML = `<span class="text-success fw-bold">✔ Acceso correcto. Redirigiendo...</span>`;
+        setTimeout(() => window.location.href = '../index.html', 1200);
+    } catch (error) {
+        console.error(error);
+        mensaje.innerHTML = `<span class="text-danger fw-bold">❌ Error de conexión.</span>`;
+    }
+}
+
+async function registerUser() {
+    const usuario = document.getElementById('reg-user').value.trim();
+    const password = document.getElementById('reg-pass').value.trim();
+    const correo = document.getElementById('reg-email').value.trim();
+    const fechaNacimiento = document.getElementById('reg-fecha').value;
+    const dni = document.getElementById('reg-dni').value.trim();
+
+    if (!usuario || !password || !correo || !fechaNacimiento || !dni) {
+        mensaje.innerHTML = `<span class="text-danger fw-bold">❌ Completa todos los campos.</span>`;
+        return;
+    }
+
+    if (password.length < 6) {
+        mensaje.innerHTML = `<span class="text-danger fw-bold">❌ La contraseña debe tener al menos 6 caracteres.</span>`;
+        return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) {
+        mensaje.innerHTML = `<span class="text-danger fw-bold">❌ Correo inválido.</span>`;
+        return;
+    }
+
+    if (!/^\d{8}$/.test(dni)) {
+        mensaje.innerHTML = `<span class="text-danger fw-bold">❌ DNI debe tener 8 dígitos.</span>`;
+        return;
+    }
+
+    const edad = new Date().getFullYear() - new Date(fechaNacimiento).getFullYear();
+    const nacimiento = new Date(fechaNacimiento);
+    const hoy = new Date();
+    if (hoy.getMonth() < nacimiento.getMonth() || (hoy.getMonth() === nacimiento.getMonth() && hoy.getDate() < nacimiento.getDate())) {
+        edad--;
+    }
+
+    if (edad < 18) {
+        mensaje.innerHTML = `<span class="text-danger fw-bold">❌ Debes ser mayor de 18 años.</span>`;
+        return;
+    }
+
+    try {
+        const respuesta = await fetch('/api/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ usuario, password, correo, fechaNacimiento, dni })
+        });
+
+        const data = await respuesta.json();
+
+        if (!respuesta.ok) {
+            mensaje.innerHTML = `<span class="text-danger fw-bold">❌ ${data.error || 'No se pudo registrar.'}</span>`;
+            return;
+        }
+
+        localStorage.setItem('usuario', data.usuario);
+        mensaje.innerHTML = `<span class="text-success fw-bold">✔ Registro exitoso. Redirigiendo...</span>`;
+        setTimeout(() => window.location.href = '../index.html', 1200);
+    } catch (error) {
+        console.error(error);
+        mensaje.innerHTML = `<span class="text-danger fw-bold">❌ Error de conexión.</span>`;
+    }
+}
+</script>
+
+</body>
+</html>

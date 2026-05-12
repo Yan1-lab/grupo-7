@@ -1,0 +1,155 @@
+body {
+    font-family: Arial;
+    margin: 0;
+    background: #f5f5f5;
+}
+
+/*ESTA ES LA PARTE DE ARRIBA, PARA EL FONDO Y LAS LETRAS*/
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    background: #131921;
+    color: #febd69; /*CON ESTO MODIFICAN EL COLOR DE LAS LETRAS*/
+    padding: 15px 20px;
+    flex-wrap: wrap;
+}
+
+.topbar-text {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.topbar-text h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.topbar-subtitle {
+    margin: 0;
+    color: #ffffffcc;
+    font-size: 0.95rem;
+}
+
+.btn-reserva-top {
+    background: #ffb700;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    min-width: 170px;
+    max-width: 220px;
+}
+
+/*EL TAMAÑO PROMEDIO DE LAS FOTOS Y/O MINIATURAS*/
+.galeria-container {
+    width: min(1400px, 100%);
+    margin: 0 auto;
+    padding: 30px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.imagen-principal {
+    flex: 2 1 0;
+    max-width: 1200px;
+}
+
+/*CON ESTO SE MODIFICA LA IMAGEN PRINCIPAL, EN LA PROXIMA REUNION VERIFICAREMOS Y ACORDAREMOS UN TAMAÑO REGULAR PARA PC Y CELULAR*/
+.imagen-principal img {
+    width: 100%;
+    height: auto;
+    max-height: 600px;
+    object-fit: cover;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+/*TAMBIEN SE CAMBIARA EL TAMAÑO DE LAS MINIATURAS*/
+.miniaturas {
+    flex: 0 0 240px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.miniaturas img {
+    width: 220px;
+    height: 138px;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: transform 0.2s;
+}
+
+.miniaturas img:hover {
+    transform: scale(1.05);
+}
+
+/*INFORMACION EN EL SITIO WEB, ESTO LO PUEDEN MODIFICAR PERO SIEMPRE AVISANDO PARA EVITAR ALGUN FALLO*/
+.info-container {
+    max-width: 1600px;
+    margin: 0 auto 40px;
+    display: flex;
+    padding: 30px 20px;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.info-left {
+    flex: 2 1 750px;
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    min-width: 400px;
+}
+
+.info-right {
+    flex: 1 1 390px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-width: 360px;
+    justify-content: flex-start;
+}
+
+.precio-box {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.btn-reservar {
+    background: #ffb700;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.tags span {
+    display: inline-block;
+    background: #eee;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 6px;
+}

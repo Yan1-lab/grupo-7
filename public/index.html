@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXPLORER | Reservas</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body> 
+    <header>
+        <h1>EXPLORER</h1>
+        <div class="search-container">
+            <input type="text" id="busqueda" placeholder="Busca tu próxima aventura...">
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <select id="moneda">
+                        <option value="USD">USD ($)</option>
+                        <option value="EUR">EUR (€)</option>
+                        <option value="PEN">PEN (S/)</option>
+                    </select>
+                </li>
+                <li class="reservas-menu" style="position: relative;">
+                    <a href="#" id="mis-reservas-toggle">Mis Reservas (<span id="cart-count">0</span>)</a>
+                    <div id="mis-reservas-dropdown" class="reservas-dropdown"></div>
+                </li>
+
+                <!-- AQUÍ SE CAMBIA LOGIN POR USUARIO -->
+                <li id="user-area"><a href="sesion/login.html" class="btn-login">Login</a></li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="filtros">
+            <select id="filtro-categoria">
+                <option value="todos">Todas las categorías</option>
+                <option value="hotel">Hoteles</option>
+                <option value="tour">Tours y Aventuras</option>
+            </select>
+            <select id="filtro-precio">
+                <option value="todos">Cualquier precio</option>
+                <option value="basico">Básico</option>
+                <option value="estandar">Estandar</option>
+                <option value="premium">Premium</option>
+            </select>
+        </section>
+
+        <section class="contenedor-tarjetas" id="grid-reservas">
+        </section>
+
+        <section class="contacto-form">
+            <h2>¿No encuentras lo que buscas?</h2>
+            <form id="form-contacto">
+                <input type="text" placeholder="Tu Nombre" required>
+                <textarea placeholder="Cuéntanos qué buscas..." rows="3"></textarea>
+                <button type="submit" class="btn-reservar">Enviar consulta</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Explorer. Sistema de Reservas Profesional.</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <!-- SCRIPT PARA MOSTRAR USUARIO LOGEADO + CERRAR SESIÓN -->
+    <script>
+    window.addEventListener("DOMContentLoaded", () => {
+        const usuario = localStorage.getItem("usuario");
+        const userArea = document.getElementById("user-area");
+
+        if (usuario) {
+            userArea.innerHTML = `
+                <div id="user-menu" style="position: relative; display: inline-block; cursor: pointer;">
+                    <span style="
+                        color: white;
+                        font-weight: bold;
+                        background: #0b1f3a;
+                        padding: 6px 12px;
+                        border-radius: 8px;
+                        display: inline-block;
+                    ">
+                        👤 ${usuario}
+                    </span>
+
+                    <div id="logout-bar" style="
+                        display: none;
+                        position: absolute;
+                        top: 40px;
+                        right: 0;
+                        background: white;
+                        color: black;
+                        padding: 10px;
+                        border-radius: 8px;
+                        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                        font-weight: bold;
+                        width: 140px;
+                        text-align: center;
+                        cursor: pointer;
+                    ">
+                        Cerrar sesión
+                    </div>
+                </div>
+            `;
+
+            const menu = document.getElementById("user-menu");
+            const logoutBar = document.getElementById("logout-bar");
+
+            menu.addEventListener("click", () => {
+                logoutBar.style.display = logoutBar.style.display === "block" ? "none" : "block";
+            });
+
+            logoutBar.addEventListener("click", () => {
+                const confirmar = confirm("¿Estás seguro de cerrar sesión?");
+                
+                if (confirmar) {
+                    localStorage.removeItem("usuario");
+                    location.reload();
+                }
+            });
+
+            document.addEventListener("click", (e) => {
+                if (!menu.contains(e.target)) {
+                    logoutBar.style.display = "none";
+                }
+            });
+        }
+    });
+    </script>
+
+</body>
+</html>
